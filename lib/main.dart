@@ -37,6 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
   static const envSome = String.fromEnvironment('ANDROID_SDK_ROOT', defaultValue: 'def');
   final platformText = Platform.environment['TEST_VAR'];
 
+  List<String> pl = Platform.environment.entries.map((e) => '${e.key}: ${e.value}').toList();
+
   final dotEnvAText = dotenv.env['DOT_VAR_A'];
   final dotEnvBText = dotenv.env['DOT_VAR_B'];
 
@@ -47,15 +49,21 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('env: $envText'),
-            const Text('env some: $envSome'),
-            Text('DOT_VAR_A: $dotEnvAText'),
-            Text('DOT_VAR_B: $dotEnvBText'),
-            Text('platform: $platformText'),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text('env: $envText'),
+              const Text('env some: $envSome'),
+              Text('DOT_VAR_A: $dotEnvAText'),
+              Text('DOT_VAR_B: $dotEnvBText'),
+              Text('platform: $platformText'),
+              const SizedBox(
+                height: 20,
+              ),
+              ...pl.map((e) => Text(e)),
+            ],
+          ),
         ),
       ),
     );
