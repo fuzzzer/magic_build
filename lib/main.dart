@@ -1,9 +1,10 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: 'config/.env');
   runApp(const MyApp());
 }
 
@@ -35,6 +36,10 @@ class _MyHomePageState extends State<MyHomePage> {
   static const envText = String.fromEnvironment('TEST_VAR', defaultValue: 'def');
   static const envSome = String.fromEnvironment('ANDROID_SDK_ROOT', defaultValue: 'def');
   final platformText = Platform.environment['TEST_VAR'];
+
+  final dotEnvAText = dotenv.env['DOT_VAR_A'];
+  final dotEnvBText = dotenv.env['DOT_VAR_B'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text('env: $envText'),
             const Text('env some: $envSome'),
+            Text('DOT_VAR_A: $dotEnvAText'),
+            Text('DOT_VAR_B: $dotEnvBText'),
             Text('platform: $platformText'),
           ],
         ),
