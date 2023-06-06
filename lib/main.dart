@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   static const envText = String.fromEnvironment('TEST_VAR', defaultValue: 'def');
+  final platformText = Platform.environment['TEST_VAR'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,8 +43,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(envText),
+          children: <Widget>[
+            const Text('env: $envText'),
+            Text('platform: $platformText'),
           ],
         ),
       ),
