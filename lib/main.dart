@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,6 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  static const envText = String.fromEnvironment('TEST_VAR', defaultValue: 'def');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const <Widget>[
-            Text(
-              String.fromEnvironment('TEST_VAR', defaultValue: 'def'),
-            ),
+            Text(envText),
           ],
         ),
       ),
