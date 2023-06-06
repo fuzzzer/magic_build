@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const <Widget>[
             Text(
-              String.fromEnvironment('TEST_VAR'),
+              String.fromEnvironment('TEST_VAR', defaultValue: 'def'),
             ),
           ],
         ),
