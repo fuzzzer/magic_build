@@ -33,6 +33,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   static const envText = String.fromEnvironment('TEST_VAR', defaultValue: 'def');
+  static const envSome = String.fromEnvironment('ANDROID_SDK_ROOT', defaultValue: 'def');
   final platformText = Platform.environment['TEST_VAR'];
   @override
   Widget build(BuildContext context) {
@@ -45,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text('env: $envText'),
+            const Text('env some: $envSome'),
             Text('platform: $platformText'),
           ],
         ),
